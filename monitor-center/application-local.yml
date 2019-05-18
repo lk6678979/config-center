@@ -10,7 +10,7 @@ spring:
   security:
     user:
       name: admin
-      password: admin@2019
+      password: admin
 #忽略权限拦截，外部系统，例如springboot admin 和mq刷新配置都需要权限
 management:
   endpoints:
