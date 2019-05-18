@@ -6,10 +6,11 @@ spring:
       port: 5672
       username: sziov
       password: sziov
+  #前端登录的账号和密码
   security:
     user:
-      name: sziov
-      password: sziov
+      name: admin@2019
+      password: admin@2019
 #忽略权限拦截，外部系统，例如springboot admin 和mq刷新配置都需要权限
 management:
   endpoints:
