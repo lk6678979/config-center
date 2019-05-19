@@ -1,0 +1,44 @@
+server:
+  port: 8501
+logging:
+  config: classpath:logback-spring-local.xml
+spring:
+  rabbitmq:
+      host: 192.168.0.90
+      port: 5672
+      username: sziov
+      password: sziov
+#忽略权限拦截，外部系统，例如springboot admin 和mq刷新配置都需要权限
+management:
+  endpoints:
+    web:
+      exposure:
+        #开放所有页面节点  默认只开启了health、info两个节点，注意yml的*要使用双引号
+        include: "*"
+  endpoint:
+    health:
+      #显示健康具体信息  默认不会显示详细信息
+      show-details: ALWAYS
+##timeout config
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+zuul:
+ #内部接口，不对外暴露
+ ignored-patterns: /*/*/inside/**
+ #设置超时时间
+ host:
+  connect-timeout-millis: 10000
+  socket-timeout-millis: 10000
+#设置ribbon超时时间和重试机制
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 1
