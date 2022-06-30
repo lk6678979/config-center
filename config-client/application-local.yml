@@ -2,10 +2,10 @@ logging:
   config: classpath:logback-spring-local.xml
 spring:
   rabbitmq:
-      host: 192.168.0.90
+      host: 127.0.0.1
       port: 5672
-      username: sziov
-      password: sziov
+      username: admin
+      password: admin
 #忽略权限拦截，外部系统，例如springboot admin 和mq刷新配置都需要权限
 management:
   endpoints:
